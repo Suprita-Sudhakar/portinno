@@ -1,0 +1,864 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background-color:white;
+        }
+
+        /* Navigation Bar */
+        nav{
+            background-color:black;
+            color:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 50px;
+        }
+
+        .logo{
+            font-size:24px;
+            font-weight:bold;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            margin-left:25px;
+            font-size:18px;
+        }
+
+        .nav-links a:hover{
+            color:lightgray;
+        }
+
+        /* About Box */
+        .container{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:80vh;
+        }
+
+        .about-box{
+            width:900px;
+            height:400px;
+            background-color:#f5f5f5;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .about-box h2{
+            margin-bottom:15px;
+            text-align:center;
+        }
+
+        .about-box h5{
+            margin-bottom:20px;
+            color:rgb(160, 26, 125);
+            text-align:center;
+        }
+
+        .about-box p{
+            line-height:1.8;
+            color:#333;
+            text-align:center;
+        }
+
+        /* Buttons */
+        .buttons{
+            margin-top:25px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:20px;
+        }
+
+        button{
+            padding:12px 28px;
+            border-radius:30px;
+            border:2px solid #007bff;
+            background:transparent;
+            color:#007bff;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+            box-shadow:0 5px 15px rgba(0,123,255,0.3);
+        }
+
+        button:hover{
+            transform:translateY(-3px);
+            background:#007bff;
+            color:white;
+        }
+
+        /* Social Icons */
+        .social-icons{
+            margin-top:30px;
+            display:flex;
+            justify-content:center;
+            gap:30px;
+        }
+
+        .social-icons a{
+            color:#333;
+            font-size:32px;
+            transition:0.3s;
+        }
+
+        .social-icons a:hover{
+            transform:translateY(-5px);
+        }
+
+        .social-icons .fa-github:hover{
+            color:black;
+        }
+
+        .social-icons .fa-linkedin:hover{
+            color:#0077b5;
+        }
+
+        .social-icons .fa-envelope:hover{
+            color:#d44638;
+        }
+
+        /* About Section */
+#about{
+    padding:80px 100px;
+    background:#ffffff;
+}
+
+.about-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.about-image img{
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #007bff;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.about-content{
+    flex:1;
+}
+
+.about-content h2{
+    color:#171b1f;
+    margin-bottom:20px;
+}
+
+.about-content p{
+    text-align:justify;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* Education Section */
+#education{
+    padding:80px 50px;
+}
+
+.edu-title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:32px;
+}
+
+.timeline{
+    position:relative;
+    width:70%;
+    margin:auto;
+}
+
+/* Vertical Line */
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    width:4px;
+    height:100%;
+    background:#007bff;
+}
+
+/* Education Section */
+#education{
+    padding:80px 50px;
+}
+
+.edu-title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:32px;
+}
+
+.timeline{
+    position:relative;
+    width:70%;
+    margin:auto;
+}
+
+/* Center Line */
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    width:4px;
+    height:100%;
+    background:#007bff;
+    transform:translateX(-50%);
+}
+
+/* Education Box */
+.edu-box{
+    position:relative;
+    width:40%;
+    margin-left:55%;
+    margin-bottom:40px;
+    padding:20px;
+
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Dot */
+.edu-box::before{
+    content:'';
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:#007bff;
+    border-radius:50%;
+
+    left:-72px;
+    top:30px;
+
+    border:4px solid white;
+}
+
+.edu-box h3{
+    color:#007bff;
+    margin-bottom:10px;
+}
+
+.edu-box p{
+    color:#333;
+    line-height:1.6;
+}
+
+/* Skills Section */
+#skills{
+    padding:80px 50px;
+}
+
+.skills-title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:50px;
+    color:#121313;
+}
+
+.skills-container{
+    display:grid;
+    grid-template-columns:repeat(2, 320px);
+    gap:25px;
+    justify-content:center;
+}
+
+/* Glass Effect Box */
+.skill-box{
+    width:320px;
+    min-height:220px;
+    padding:20px;
+
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.skill-box:hover{
+    transform:translateY(-8px);
+}
+
+.skill-box h3{
+    color:#171a1e;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:20px;
+}
+
+/* Blue Icons */
+.skill-box i{
+    color:#1a69b3;
+    margin-right:8px;
+}
+
+/* Blue Rounded Buttons */
+.skill-tag{
+    display:inline-block;
+    background:#007bff;
+    color:white;
+    padding:8px 15px;
+    margin:5px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.skill-tag:hover{
+    transform:scale(1.05);
+    cursor:pointer;
+}
+
+/* Projects Section */
+#projects{
+    padding:80px 50px;
+}
+
+.project-title{
+    text-align:center;
+    font-size:32px;
+    color:#16181a;
+    margin-bottom:50px;
+}
+
+.project-container{
+    display:grid;
+    grid-template-columns:repeat(2, 350px);
+    gap:30px;
+    justify-content:center;
+}
+
+/* 3D Glass Box */
+.project-box{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.3);
+
+    padding:25px;
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 20px rgba(0,0,0,0.1),
+    0 6px 6px rgba(0,0,0,0.08);
+
+    transition:0.4s;
+}
+
+.project-box:hover{
+    transform:translateY(-10px) rotateX(5deg);
+    box-shadow:
+    0 20px 30px rgba(0,0,0,0.15);
+}
+
+.project-box h3{
+    color:#090b0c;
+    margin-bottom:15px;
+}
+
+.project-box p{
+    color:#333;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.project-box h4{
+    margin-bottom:10px;
+    color:#444;
+}
+
+/* Technology Tags */
+.tech-tag{
+    display:inline-block;
+    background:#007bff;
+    color:white;
+    padding:7px 14px;
+    border-radius:20px;
+    margin:4px;
+    font-size:13px;
+}
+
+/* GitHub Icon */
+.project-links{
+    text-align:center;
+    margin-top:20px;
+}
+
+.project-links a{
+    color:#007bff;
+    font-size:35px;
+    transition:0.3s;
+}
+
+.project-links a:hover{
+    transform:scale(1.2);
+    color:black;
+}
+
+
+
+
+#certificates{
+    padding:50px 20px;
+    background:#f5f5f5;
+}
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.certificate-card{
+    width:500px;
+    margin:30px auto;
+    background:white;
+    border-left:6px solid blue;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.15);
+}
+
+.certificate-card img{
+    width:100%;
+    border-radius:10px;
+}
+
+.certificate-card h5{
+    margin-top:20px;
+    font-size:28px;
+}
+
+.certificate-card p{
+    color:gray;
+    font-style:italic;
+    font-size:20px;
+}
+        
+#contact{
+    padding:80px 20px;
+    background:#f8f9fa;
+    text-align:center;
+}
+
+#contact h2{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.subtitle{
+    font-size:22px;
+    color:gray;
+    margin-bottom:40px;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-box h3{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.contact-box p{
+    font-size:20px;
+    color:#555;
+    line-height:1.7;
+}
+
+.contact-info{
+    margin-top:30px;
+}
+
+.contact-info p{
+    margin:15px 0;
+    font-size:22px;
+}
+
+.social-icons{
+    margin-top:30px;
+}
+
+.social-icons a{
+    color:#222;
+    font-size:35px;
+    margin:0 15px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    color:#0077b5;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Suprita Baligar</div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="about-box">
+
+            <h2>
+                <span style="color:black;">Hi, I'm </span>
+                <span style="color:rgb(75,133,221);">
+                    Suprita Sudhakar Baligar
+                </span>
+            </h2>
+
+            <h5>Full Stack Developer & AI/ML Engineer</h5>
+
+            <p>
+                Passionate about building intelligent applications and
+                transforming ideas into scalable, actionable solutions.
+                I love crafting innovative tech that makes a real difference,
+                pouring my heart into every line of code to bring visions to life
+                with creativity and dedication.
+            </p>
+
+            <div class="buttons">
+    <button onclick="location.href='#contact'">Hire Me</button>
+    <button onclick="location.href='#contact'">Get My Resume</button>
+</div>
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <a href="https://github.com/" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <a href="https://linkedin.com/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+
+                <a href="mailto:yourmail@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ABOUT -->
+<section id="about">
+
+    <div class="about-container">
+
+    <!-- Left Side Photo -->
+        <div class="about-image">
+            <img src="{% static 'images/suprita.jpeg' %}" alt="Suprita Baligar">
+        </div>  
+
+        <!-- Right Side Content -->
+        <div class="about-content">
+            <h2>About Me</h2>
+
+            <p>
+                As a <b>dedicated Full Stack Developer</b> and <b>AI/ML specialist</b>,
+                 I specialize in developing dynamic web applications and advanced machine learning models.
+                  Expert in <b>Python, JavaScript, React, Django, </b>and leading ML libraries, 
+                  I focus on creating efficient, scalable solutions for complex real-world issues. 
+                  I'm eager to innovate with cutting-edge tech and collaborate on transformative initiatives.
+                  <br><b>Career Goal:</b> Join a forward-thinking team as a Full Stack and AI/ML Developer, 
+                  applying my web and ML skills to engineer groundbreaking solutions that drive meaningful impact </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="education">
+
+    <h2 class="edu-title">Education</h2>
+
+    <div class="timeline">
+
+        <div class="edu-box">
+            <h3>SSLC</h3>
+            <p>Kittur Rani Chennamma Residential School<br>
+               2014-2019<br>
+            Percentage: 83.08%</p>
+        </div>
+
+        <div class="edu-box">
+            <h3>Pre-University</h3>
+            <p>Atal Bihari Vajpeyi PU College<br>
+                2020-2022<br>
+            Percentage: 80%</p>
+        </div>
+
+        <div class="edu-box">
+            <h3>Bachelor of Engineering</h3>
+            <p>Karavali Institute of Technology, Mangalore<br>
+                2022-2026<br>
+                CGPA: 9.0/10
+
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="skills">
+
+    <h2 class="skills-title">Skills</h2>
+
+    <div class="skills-container">
+
+        <!-- Full Stack Development -->
+        <div class="skill-box">
+            <h3><i class="fas fa-code"></i> Full Stack Development</h3>
+
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="skill-box">
+            <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">TensorFlow</span>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-box">
+            <h3><i class="fas fa-database"></i> Databases</h3>
+
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">MySQL</span>
+            
+        </div>
+
+        <!-- Other Skills -->
+        <div class="skill-box">
+            <h3><i class="fas fa-star"></i> Other Skills</h3>
+
+            <span class="skill-tag">Data Preprocessing</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">DSA</span>
+        </div>
+
+    </div>
+
+
+<section id="projects">
+
+    <h2 class="project-title">Projects</h2>
+
+    <div class="project-container">
+
+        <!-- Project 1 -->
+        <div class="project-box">
+            <h3>Digital Profile</h3>
+
+            <p>
+                Created a personal portfolio website to showcase skills, projects, and Experience.
+                Designed a responsive layout with interactive elements using HTML, CSS, and JavaScript.
+
+            </p>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+
+            <div class="project-links">
+                <a href="#" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-box">
+            <h3>Music Instruments Image Classification</h3>
+
+            <p>
+            Designed an image classification system to identify and classify images of Music Instruments using 
+CNN. The model learns patterns such as shape, color, and texture from images to accurately predict the class. 
+            </p>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">CNN</span>
+        </span>
+
+            <div class="project-links">
+                <a href="#" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-box">
+            <h3>Soldier Health Monitoring and LoCation Tracking System Using IOT</h3>
+
+            <p>
+                Developed an IoT-based system the attacks real-time health parameters 
+with GPS-based location monitoring. Enabled continuous monitoring and instant alerts for abnormal conditions. 
+Created an interactive dashboard to visualize soldier’s health reports, live tracking information, and alert notifications in a user–friendly 
+Format. 
+            </p>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">c++</span>
+            <span class="tech-tag">IOT</span>
+
+            <div class="project-links">
+                <a href="#" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</section>
+</section>
+
+<section id="certificates">
+    <h2 class="section-title">Certificates</h2>
+
+    <div class="certificate-card">
+        <img src="{% static 'images/certificate.png' %}" alt="Certificate">
+        <h2>Python and Applied Machine Learning</h2>
+        <p>Karunadu Technologies Pvt Ltd, May 2026</p>
+    </div>
+
+<section id="contact">
+    <h2>Get In Touch</h2>
+
+    <p class="subtitle">
+        I'd love to hear from you! Reach out through the form
+        or any of the options below.
+    </p>
+
+    <div class="contact-box">
+        <h3>Let's Connect</h3>
+
+        <p>
+            I'd love to collaborate or hear from you.
+            Feel free to reach out through any of the channels below.
+        </p>
+
+        <div class="contact-info">
+    <p>
+        <strong>Email:</strong>
+        <a href="mailto:supritasudhakar@gmail.com" class="contact-link">
+            supritasudhakar@gmail.com
+        </a>
+    </p>
+
+    <p>
+        <strong>Phone:</strong>
+        <a href="tel:+918904344870" class="contact-link">
+            +91 8904344870
+        </a>
+    </p>
+
+    <p>
+        <strong>Location:</strong> Bangalore, India
+    </p>
+</div>
+
+        <div class="social-icons">
+            <a href="https://github.com/yourusername">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://linkedin.com/in/yourprofile">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://instagram.com/yourprofile">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+    
+    </div>
+</section>
+    <script>
+        function hireMe() {
+            alert("Thank you for your interest! Please contact me.");
+        }
+
+        function getResume() {
+            alert("Resume download link will be added here.");
+        }
+    </script>
+
+</body>
+</html>
